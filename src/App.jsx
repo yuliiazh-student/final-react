@@ -1,6 +1,12 @@
 import HowItWorks from './HowItWorks';
 import Footer from './Footer';
 import myVideo from './assets/video/bazil.mp4';
+import Logo from './assets/images/Logo.svg';
+import Balcony from './assets/images/Balcony.webp';
+import Card from './assets/images/Card.webp';
+import Dish from './assets/images/dish.webp';
+import Shop from './assets/images/shop.webp';
+import Shop2 from './assets/images/shop2.webp';
 
 function App() {
 
@@ -11,7 +17,7 @@ function App() {
           <div className="container">
             <div>
               <a href="#">
-                <img src="./src/assets/images/logo.svg" alt="Logo" />
+                <img src={Logo} alt="Logo" />
               </a>
             </div>
             <nav>
@@ -47,10 +53,10 @@ function App() {
               <div className="first-card">
                 <h2>95%</h2>
                 <p>Improved Eating Habits</p>
-                <img src="./src/assets/images/shop2.webp" alt="Green bag" />
+                <img src={Shop2} alt="Green bag" />
               </div>
               <div className="high-card">
-                <img src="./src/assets/images/dish.webp" alt="Healthy meal" />
+                <img src={Dish} alt="Healthy meal" />
               </div>
               <div className="hero-center">
                 <div className="hero-buttons">
@@ -62,16 +68,16 @@ function App() {
                   </div>
                 </div>
                 <div className="card-users">
-                  <img src="./src/assets/images/Card.webp" alt="Quantity" />
+                  <img src={Card} alt="Quantity" />
                 </div>
               </div>
               <div className="third-card">
-                <img src="./src/assets/images/shop.webp" alt="White bag" />
+                <img src={Shop} alt="White bag" />
                 <h2>25%</h2>
                 <p>Saved on Groceries</p>
               </div>
               <div className="high-card-2">
-                <img src="./src/assets/images/Balcony.webp" alt="Plants" />
+                <img src={Balcony} alt="Plants" />
               </div>
             </div>
           </div>
@@ -93,7 +99,6 @@ function App() {
                     className="video-content"
                   >
                     <source src={myVideo} type="video/mp4" />
-                    Ваш браузер не підтримує тег video.
                   </video>
                 </div>
               </div>
