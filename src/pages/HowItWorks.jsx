@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import img1 from './assets/images/girl.webp';
-import img2 from './assets/images/table.webp';
-import img3 from './assets/images/salad.webp';
+import img1 from '../assets/images/girl.webp';
+import img2 from '../assets/images/table.webp';
+import img3 from '../assets/images/salad.webp';
 
 const steps = [
     {
