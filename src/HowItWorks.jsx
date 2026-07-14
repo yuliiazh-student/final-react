@@ -45,8 +45,8 @@ export default function HowItWorks() {
                         <p className="step-desc">{steps[current].description}</p>
 
                         <div className="controls">
-                            <button onClick={prevSlide} className="btn-prev"><i class="icon-Label-left"></i></button>
-                            <button onClick={nextSlide} className="btn-next"><i class="icon-Label-right"></i></button>
+                            <button onClick={prevSlide} className="btn-prev"><i className="icon-Label-left"></i></button>
+                            <button onClick={nextSlide} className="btn-next"><i className="icon-Label-right"></i></button>
                             <div className="pagination">
                                 0{current + 1}/0{steps.length}
                             </div>
