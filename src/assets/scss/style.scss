@@ -104,14 +104,16 @@ header {
         font-weight: 500;
         @include fz(22);
         @include lh(28);
+        border-bottom: 1px solid transparent;
+        padding-bottom: 4px;
 
         &:hover {
-            border-bottom: 1px solid $hover;
+            border-bottom-color: $hover;
         }
 
         &:active {
             color: $green;
-            border-bottom: 1px solid $green;
+            border-bottom-color: $green;
         }
     }
 }
