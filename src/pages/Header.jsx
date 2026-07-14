@@ -6,7 +6,7 @@ export default function Header() {
         <header className="header">
             <div className="container">
                 <div>
-                    <NavLink to="/">
+                    <NavLink to="./">
                         <img src={Logo} alt="Logo" />
                     </NavLink>
                 </div>
@@ -19,7 +19,7 @@ export default function Header() {
                             <NavLink to="/blog">Blog</NavLink>
                         </li>
                         <li>
-                            <a href="#">Customer Support</a>
+                            <NavLink to="/support">Customer Support</NavLink>
                         </li>
                     </ul>
                 </nav>
@@ -28,7 +28,9 @@ export default function Header() {
                 <button>Log In</button>
               </div> */}
                     <div className="main-btn">
-                        <button>Start For Free</button>
+                        <NavLink to="/register">
+                            <button type="button">Start For Free</button>
+                        </NavLink>
                     </div>
                 </div>
             </div>

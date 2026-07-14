@@ -3,6 +3,7 @@ import Card from '../assets/images/Card.webp';
 import Dish from '../assets/images/dish.webp';
 import Shop from '../assets/images/shop.webp';
 import Shop2 from '../assets/images/shop2.webp';
+import { NavLink } from 'react-router-dom';
 
 export default function Hero() {
     return (
@@ -24,10 +25,12 @@ export default function Hero() {
                     <div className="hero-center">
                         <div className="hero-buttons">
                             <div className="btn-demo">
-                                <button>Try Our Demo</button>
+                                <button type="button">Try Our Demo</button>
                             </div>
                             <div className="btn-free">
-                                <button>Start For Free</button>
+                                <NavLink to="/register">
+                                    <button type="button">Start For Free</button>
+                                </NavLink>
                             </div>
                         </div>
                         <div className="card-users">

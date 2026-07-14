@@ -6,7 +6,7 @@ export default function Footer() {
                 <div className="footer-container">
                     <div className="footer-brand-nav">
                         <div className="footer-logo">
-                            <NavLink to="/">
+                            <NavLink to="./">
                                 <svg width="74" height="50" viewBox="0 0 74 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M50 25C50 38.8071 38.8071 50 25 50C11.1929 50 0 38.8071 0 25C0 11.1929 11.1929 0 25 0C38.8071 0 50 11.1929 50 25Z" fill="#D9EF78" />
                                     <path d="M61.3636 0H73.4849V50H61.3636V0Z" fill="#D9EF78" />
@@ -19,7 +19,7 @@ export default function Footer() {
                                 <NavLink to="/blog">Blog</NavLink>
                             </div>
                             <div className="nav-column">
-                                <a href="#">Customer Support</a>
+                                <NavLink to="/support">Customer Support</NavLink>
                                 <a href="#">Your Profile</a>
                             </div>
                         </nav>
