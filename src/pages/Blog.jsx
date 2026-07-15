@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import placeholderImg from '../assets/images/placeholder.png';
 
 export default function Blog() {
     const [news, setNews] = useState([]);
@@ -7,6 +8,7 @@ export default function Blog() {
 
     const API_KEY = '6e166f385f5f44e89b57f13998d2d9f3';
     const SEARCH_TEXT = 'recipes cooking';
+    const PLACEHOLDER_IMAGE = placeholderImg;
 
     useEffect(() => {
         async function fetchNews() {
@@ -66,7 +68,15 @@ export default function Blog() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '30px' }}>
                 {news.map((item) => (
                     <div key={item.title} style={{ border: '1px solid #ddd', borderRadius: '12px', overflow: 'hidden', background: '#fff', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-                        {item.image && <img src={item.image} alt={item.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />}
+                        <img
+                            src={item.image || PLACEHOLDER_IMAGE}
+                            alt={item.title}
+                            onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = PLACEHOLDER_IMAGE;
+                            }}
+                            style={{ width: '100%', height: '220px', objectFit: 'cover', background: '#f2f2f2' }}
+                        />
                         <div style={{ padding: '20px' }}>
                             <h2 style={{ fontSize: '18px', margin: '0 0 10px 0', color: '#333', lineHeight: '1.4' }}>{item.title}</h2>
                             <p style={{ color: '#666', lineHeight: '1.6', fontSize: '14px' }}>
