@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './assets/scss/style.scss'
 import './assets/css/icons.css'
+import './assets/css/fonts.css';
 
 import { routes } from './routes'
 
