@@ -25,6 +25,36 @@ $syne: "Syne",
     letter-spacing: math.div($percent * $font-size, 100) * 1px;
 }
 
+@mixin desktop {
+    @media (max-width: 1440px) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin tablet-small {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
 *,
 *::before,
 *::after {
@@ -426,23 +456,6 @@ header {
     }
 }
 
-// .how-it-works {
-//     position: relative;
-
-//     &::after {
-//         content: "";
-//         position: absolute;
-//         transform: scaleX(-1);
-//         bottom: -30px;
-//         left: 0;
-//         width: 687px;
-//         height: 203px;
-//         background-color: $white;
-//         border-radius: 100px 0 0 100px;
-//         z-index: 1;
-//     }
-// }
-
 .section-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -519,6 +532,40 @@ header {
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         transform-origin: bottom center;
         transition: transform 0.5s ease, z-index 0.5s ease;
+        transform: translateX(var(--translate-x)) rotate(var(--rotate));
+    }
+}
+
+.cards-stack {
+    @include tablet-small {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+    }
+
+    .stack-card {
+        @include tablet-small {
+            display: none;
+
+            &.active {
+                display: block;
+                position: static;
+                width: 100%;
+                transform: none;
+                aspect-ratio: 3 / 4;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}
+
+.text-block {
+    .controls {
+        @include tablet-small {
+            margin-bottom: 30px;
+        }
     }
 }
 
@@ -637,8 +684,345 @@ header {
     opacity: 0.9;
 }
 
+// burger
+
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: $text;
+        border-radius: 2px;
+    }
+
+    @include tablet {
+        display: flex;
+    }
+}
+
+.main-nav {
+    @include tablet {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: $section;
+        padding: 20px;
+
+        &.nav-open {
+            display: block;
+        }
+    }
+}
+
+.nav-list {
+    @include tablet {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
 .social-icon:active {
     transform: scale(1.1);
     opacity: 0.9;
     background-color: $green;
+}
+
+// responsive
+header {
+    @include tablet-small {
+        margin-top: 20px;
+        height: 60px;
+    }
+}
+
+
+.buttons {
+    @include tablet {
+        .main-btn {
+            display: none;
+        }
+    }
+}
+
+.burger-btn {
+    @include tablet {
+        display: flex;
+    }
+}
+
+.mobile-nav-overlay {
+    @include tablet {
+        display: flex;
+    }
+}
+
+.hero {
+    @include tablet-small {
+        padding-top: 50px;
+    }
+
+    &::after {
+        @include tablet-small {
+            display: none;
+        }
+    }
+}
+
+.hero hgroup {
+    @include tablet {
+        width: 85%;
+    }
+
+    @include tablet-small {
+        width: 100%;
+    }
+
+    h1 {
+        @include desktop {
+            @include fz(48);
+        }
+
+        @include tablet-small {
+            @include fz(34);
+        }
+    }
+
+    p {
+        @include tablet-small {
+            @include fz(18);
+        }
+    }
+}
+
+.hero .photos {
+    @include tablet {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    @include tablet-small {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
+}
+
+.first-card,
+.high-card-2 {
+    @include tablet {
+        transform: none;
+    }
+}
+
+.card-users img {
+    @include tablet {
+        transform: none;
+    }
+}
+
+.demo hgroup,
+.how-it-works .section-header {
+    @include tablet-small {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    h2 {
+        @include desktop {
+            @include fz(40);
+        }
+
+        @include tablet-small {
+            @include fz(32);
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    p {
+        @include tablet {
+            width: 100%;
+        }
+
+        margin-left: 0;
+    }
+
+    @include tablet {
+        gap: 40px;
+    }
+
+    h2 {
+        @include tablet {
+            @include fz(40);
+
+            &::after {
+                height: 60px;
+                margin-left: 20px;
+            }
+        }
+    }
+}
+
+.general-wrapper {
+    @include tablet-small {
+        flex-direction: column;
+        width: 100%;
+        border-radius: 30px;
+        border-right: 2px solid $text;
+    }
+}
+
+.paragraf {
+    @include tablet {
+        width: 50%;
+    }
+
+    @include tablet-small {
+        width: 100%;
+        @include fz(36);
+    }
+}
+
+.section-content {
+    @include laptop {
+        gap: 80px;
+    }
+
+    @include tablet-small {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.cards-stack {
+    @include tablet-small {
+        margin-left: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+// Footer
+.footer-container {
+    @include tablet-small {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+.footer-brand-nav {
+    @include mobile {
+        flex-direction: column;
+        gap: 25px;
+    }
+}
+
+.footer-nav {
+    @include mobile {
+        flex-direction: column;
+        gap: 25px;
+    }
+}
+
+.footer-info-social {
+    @include tablet-small {
+        flex-direction: column;
+        gap: 30px;
+        min-width: 100%;
+    }
+}
+
+.footer-text {
+    @include tablet-small {
+        padding-right: 0;
+    }
+}
+
+.footer-container {
+    @include tablet {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    @include tablet-small {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+.footer-brand-nav {
+    @include tablet {
+        width: 100%;
+    }
+}
+
+.footer-bottom {
+    margin-top: 30px;
+
+    @include tablet {
+        margin-top: 40px;
+    }
+}
+
+@include tablet-small {
+
+    .hero .photos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding-bottom: 60px;
+    }
+
+    .hero .photos .first-card,
+    .hero .photos .third-card,
+    .hero .photos .high-card,
+    .hero .photos .high-card-2,
+    .hero .photos .card-users {
+        transform: none;
+    }
+
+    .hero .photos .card-users img {
+        transform: none;
+        border-radius: 20px;
+    }
+
+    .first-card,
+    .third-card {
+        padding: 10px;
+
+        h2 {
+            @include fz(28);
+        }
+
+        p {
+            @include fz(16);
+            margin-bottom: 15px;
+        }
+    }
+
+    .hero-buttons {
+        margin-top: 20px;
+    }
+}
+
+@include mobile {
+    .hero .photos {
+        grid-template-columns: 1fr;
+    }
 }

@@ -67,9 +67,10 @@ export default function HowItWorks() {
                                     key={step.id}
                                     style={{
                                         zIndex: zIndex,
-                                        transform: `translateX(${translateX}px) rotate(${rotate}deg)`,
+                                        '--translate-x': `${translateX}px`,
+                                        '--rotate': `${rotate}deg`,
                                     }}
-                                    className="stack-card"
+                                    className={`stack-card ${offset === 0 ? 'active' : ''}`}
                                 >
                                     <img src={step.image} alt={step.title} />
                                 </div>

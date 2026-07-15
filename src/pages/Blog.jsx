@@ -8,21 +8,20 @@ export default function Blog() {
     const API_KEY = '6e166f385f5f44e89b57f13998d2d9f3';
     const SEARCH_TEXT = 'recipes cooking';
 
-    const CACHE_KEY = 'blog_news_cache';
-    const CACHE_TIME_KEY = 'blog_news_cache_time';
-    const CACHE_DURATION = 60 * 60 * 1000; // 1 година
-
     useEffect(() => {
         async function fetchNews() {
+            const CACHE_KEY = 'blog_news_cache';
+            const CACHE_TIME_KEY = 'blog_news_cache_time';
+            const CACHE_DURATION = 60 * 60 * 1000;
             try {
-                // Перевіряємо, чи є свіжий кеш
+
                 const cachedData = localStorage.getItem(CACHE_KEY);
                 const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
 
                 if (cachedData && cachedTime && (Date.now() - Number(cachedTime) < CACHE_DURATION)) {
                     setNews(JSON.parse(cachedData));
                     setLoading(false);
-                    return; // виходимо, не робимо новий запит до API
+                    return;
                 }
 
                 const url = `https://api.worldnewsapi.com/search-news?api-key=${API_KEY}&text=${SEARCH_TEXT}`;
@@ -39,7 +38,6 @@ export default function Blog() {
 
                 setNews(uniqueNews);
 
-                // Зберігаємо результат у кеш
                 localStorage.setItem(CACHE_KEY, JSON.stringify(uniqueNews));
                 localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
 
